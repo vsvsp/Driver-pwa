@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#075c2a">
+<title>Darshana Sethu Partner</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,sans-serif;background:#f4f7f5;color:#102018;padding-bottom:82px}
+button{font:inherit;cursor:pointer}
+.hd{position:sticky;top:0;background:#063d1d;color:#fff;padding:12px 14px;z-index:5}
+.hi{max-width:650px;margin:auto;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.brand{font-weight:900;font-size:15px}.brand span{color:#b8ef22}
+.tag{font-size:8px;color:#cfe5d5;letter-spacing:1px;margin-top:4px}
+.lang{border:1px solid #6c8f78;border-radius:20px;padding:8px 11px;background:#0c5428;color:#fff;font-size:10px;font-weight:900}
+main{max-width:650px;margin:auto;padding:14px}
+.page{display:none}.active{display:block}
+.hero,.card{border-radius:20px;padding:17px;margin-bottom:13px}
+.hero{background:#083d1e;color:#fff}.hero h1{font-size:25px;line-height:1.2}
+.hero p{color:#d5e8da;font-size:12px;line-height:1.55;margin-top:7px}
+.te{display:block;color:#bfe4c8;font-size:11px;margin-top:3px}
+.online{display:flex;justify-content:space-between;align-items:center;margin-top:16px;font-size:11px;gap:8px}
+.toggle,.primary{border:0;border-radius:13px;padding:13px;background:#b8ef22;color:#092414;font-weight:900}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.stat{background:#fff;border-radius:14px;padding:13px}
+.stat small{display:block;color:#66756b;font-size:9px;font-weight:900}
+.stat b{display:block;font-size:20px;margin-top:5px}
+.title{font-size:17px;font-weight:900;margin:18px 2px 10px}
+.title .te{font-weight:600}
+.ride{border:2px solid #b8ef22;background:#fcfff4}
+.rt{display:flex;justify-content:space-between;gap:8px}
+.new{background:#e8f8b8;border-radius:20px;padding:6px 9px;font-size:9px;font-weight:900}
+.dist{font-size:21px;font-weight:900;margin-top:12px}
+.muted{color:#66756b;font-size:10px}.route{font-size:13px;font-weight:800;line-height:1.7;margin-top:10px}
+.fare{display:flex;justify-content:space-between;border-top:1px solid #e6ebe7;margin-top:12px;padding-top:12px;gap:12px}
+.fare b{font-size:21px}.actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
+.accept,.reject,.dark{border:0;border-radius:13px;padding:13px;font-weight:900}
+.accept{background:#b8ef22}.reject{background:#edf1ee}.dark{background:#083d1e;color:#fff;width:100%;margin-top:9px}
+.bottom{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid #dfe7e1;z-index:10}
+.nav{max-width:650px;margin:auto;display:grid;grid-template-columns:repeat(4,1fr);padding:7px}
+.nav button{border:0;background:transparent;padding:7px;font-size:10px;font-weight:900;color:#66756b}
+.nav button.active{color:#083d1e;background:#eef8e8;border-radius:13px}
+.profile{display:flex;gap:12px;align-items:center}
+.avatar{width:58px;height:58px;border-radius:16px;background:#b8ef22;display:flex;align-items:center;justify-content:center;font-size:25px;font-weight:900}
+.cabphoto{width:58px;height:58px;border-radius:16px;background:#eaf1eb;display:flex;align-items:center;justify-content:center;font-size:25px}
+.menu{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.menu button{border:1px solid #e1e8e3;background:#fff;border-radius:15px;padding:14px;text-align:left;font-weight:900}
+.menu span{display:block;font-size:20px;margin-bottom:7px}.menu small{display:block;color:#66756b;font-size:9px}
+.row{display:flex;justify-content:space-between;padding:11px 0;border-bottom:1px solid #e8ece9;font-size:12px;gap:10px}
+.modal{position:fixed;inset:0;background:#0008;display:none;align-items:end;z-index:20}.modal.show{display:flex}
+.sheet{width:min(650px,100%);background:#fff;border-radius:24px 24px 0 0;padding:20px}
+.sheet h2{margin-bottom:10px}.chat{height:230px;background:#f4f7f5;border-radius:14px;padding:10px}
+.msg{background:#fff;padding:9px;border-radius:11px;width:max-content;margin-bottom:7px;font-size:11px}.me{margin-left:auto;background:#e8f8b8}
+.input{display:flex;gap:6px;margin-top:8px}.input input{flex:1;padding:11px;border:1px solid #ddd;border-radius:11px}.input button{border:0;background:#083d1e;color:#fff;border-radius:11px;padding:0 13px}
+</style>
+</head>
+<body>
+<header class="hd">
+<div class="hi">
+<div><div class="brand">DARSHANA <span>SETHU PARTNER</span></div><div class="tag">DRIVE • EARN • GROW</div></div>
+<button class="lang" onclick="toggleLang()" id="langBtn">తెలుగు</button>
+</div>
+</header>
+
+<main>
+<section id="home" class="page active">
+<div class="hero">
+<h1 data-en="Good morning, Partner 👋" data-te="శుభోదయం, పార్ట్నర్ 👋">Good morning, Partner 👋</h1>
+<p data-en="Stay online to receive nearby cab requests." data-te="దగ్గరలో ఉన్న క్యాబ్ రైడ్ అభ్యర్థనలు పొందడానికి Onlineలో ఉండండి.">Stay online to receive nearby cab requests.</p>
+<span class="te">దగ్గరలో ఉన్న రైడ్‌లను స్వీకరించడానికి Onlineలో ఉండండి.</span>
+<div class="online"><span id="ot">You are available for rides</span><button class="toggle" onclick="online()">ONLINE</button></div>
+</div>
+<div class="stats">
+<div class="stat"><small data-en="TODAY'S EARNINGS" data-te="ఈ రోజు ఆదాయం">TODAY'S EARNINGS</small><b>₹2,850</b></div>
+<div class="stat"><small data-en="COMPLETED RIDES" data-te="పూర్తయిన రైడ్‌లు">COMPLETED RIDES</small><b>6</b></div>
+</div>
+
+<div class="title"><span data-en="New Ride" data-te="కొత్త రైడ్">New Ride</span></div>
+<div class="card ride" id="ride">
+<div class="rt"><b data-en="🚕 NEW RIDE AVAILABLE" data-te="🚕 కొత్త రైడ్ అందుబాటులో ఉంది">🚕 NEW RIDE AVAILABLE</b></div>
+<div class="dist">📍 3.2 km <span data-en="away" data-te="దూరంలో">away</span></div>
+<div class="muted" data-en="Estimated pickup • ~8 min" data-te="అంచనా Pickup • ~8 నిమిషాలు">Estimated pickup • ~8 min</div>
+<div class="route">● Rajahmundry Railway Station<br>↓<br>■ Antarvedi Temple</div>
+<div class="fare">
+<div><small data-en="TRIP FARE" data-te="ట్రిప్ ఛార్జీ">TRIP FARE</small><br><b>₹2,500</b></div>
+<div><small data-en="YOUR EST. EARNINGS" data-te="మీ అంచనా ఆదాయం">YOUR EST. EARNINGS</small><br><b>₹2,292</b></div>
+</div>
+<div class="actions">
+<button class="reject" onclick="rejectRide()" data-en="Reject" data-te="తిరస్కరించు">Reject</button>
+<button class="accept" onclick="acceptRide()" data-en="Accept Ride" data-te="రైడ్ స్వీకరించు">Accept Ride</button>
+</div>
+</div>
+</section>
+
+<section id="trip" class="page">
+<div class="title"><span data-en="Active Ride" data-te="ప్రస్తుతం ఉన్న రైడ్">Active Ride</span></div>
+<div class="card">
+<div class="rt"><b data-en="🚕 CUSTOMER PICKUP" data-te="🚕 కస్టమర్ Pickup">🚕 CUSTOMER PICKUP</b><span class="new" data-en="ASSIGNED" data-te="కేటాయించబడింది">ASSIGNED</span></div>
+<div class="dist">📍 3.2 km</div>
+<div class="route">Rajahmundry Railway Station<br>↓<br>Antarvedi Temple</div>
+<div class="row"><span data-en="Customer" data-te="కస్టమర్">Customer</span><b>Ravi Kumar</b></div>
+<div class="row"><span data-en="Phone" data-te="ఫోన్">Phone</span><b>+91 98765 43210</b></div>
+<div class="row"><span data-en="Passengers" data-te="ప్రయాణికులు">Passengers</span><b>4</b></div>
+<div class="row"><span data-en="Fare" data-te="ఛార్జీ">Fare</span><b>₹2,500</b></div>
+<button class="primary" style="width:100%;margin-top:13px" onclick="chat()">💬 <span data-en="In-app Chat" data-te="యాప్‌లో Chat">In-app Chat</span></button>
+<button class="dark" onclick="pin()">🔐 <span data-en="Verify Ride PIN & Start" data-te="Ride PIN ధృవీకరించి ప్రారంభించండి">Verify Ride PIN & Start</span></button>
+</div>
+</section>
+
+<section id="earn" class="page">
+<div class="title"><span data-en="Earnings" data-te="ఆదాయం">Earnings</span></div>
+<div class="card">
+<div class="stat"><small data-en="THIS MONTH" data-te="ఈ నెల">THIS MONTH</small><b>₹48,650</b></div>
+<div class="row"><span data-en="Trip fare" data-te="ట్రిప్ ఛార్జీ">Trip fare</span><b>₹52,800</b></div>
+<div class="row"><span data-en="Commission" data-te="కమిషన్">Commission</span><b>− ₹4,150</b></div>
+<div class="row"><span data-en="Net earnings" data-te="నికర ఆదాయం">Net earnings</span><b>₹48,650</b></div>
+</div>
+<div class="title"><span data-en="Wallet" data-te="వాలెట్">Wallet</span></div>
+<div class="card"><div class="stat"><small data-en="WALLET BALANCE" data-te="వాలెట్ బ్యాలెన్స్">WALLET BALANCE</small><b>₹320</b></div></div>
+</section>
+
+<section id="account" class="page">
+<div class="title"><span data-en="Partner Account" data-te="పార్ట్నర్ ఖాతా">Partner Account</span></div>
+<div class="card profile">
+<div class="avatar">R</div><div class="cabphoto">🚕</div>
+<div><b>Ramesh Kumar</b><div class="muted" data-en="Partner" data-te="పార్ట్నర్">Partner</div><div class="muted" data-en="Phone number available to customers" data-te="ఫోన్ నంబర్ కస్టమర్‌కు అందుబాటులో ఉంటుంది">Phone number available to customers</div></div>
+</div>
+<div class="menu">
+<button onclick="chat()"><span>💬</span><span data-en="Support Chat" data-te="సపోర్ట్ Chat">Support Chat</span><small data-en="In-app support" data-te="యాప్‌లో సహాయం">In-app support</small></button>
+<button onclick="alert(t('Safety Center','సేఫ్టీ సెంటర్'))"><span>🛡️</span><span data-en="Safety" data-te="సేఫ్టీ">Safety</span><small data-en="Safety tools" data-te="భద్రతా సదుపాయాలు">Safety tools</small></button>
+<button onclick="alert(t('Ride History','రైడ్ చరిత్ర'))"><span>📋</span><span data-en="Ride History" data-te="రైడ్ చరిత్ర">Ride History</span><small data-en="Completed trips" data-te="పూర్తయిన ట్రిప్‌లు">Completed trips</small></button>
+<button onclick="alert(t('Profile settings','ప్రొఫైల్ సెట్టింగ్స్'))"><span>⚙️</span><span data-en="Settings" data-te="సెట్టింగ్స్">Settings</span><small data-en="App preferences" data-te="యాప్ ప్రాధాన్యతలు">App preferences</small></button>
+</div>
+</section>
+</main>
+
+<nav class="bottom"><div class="nav">
+<button class="active" onclick="show('home',this)">🏠<br><span data-en="Home" data-te="హోమ్">Home</span></button>
+<button onclick="show('trip',this)">🚕<br><span data-en="Active Ride" data-te="ప్రస్తుత రైడ్">Active Ride</span></button>
+<button onclick="show('earn',this)">₹<br><span data-en="Earnings" data-te="ఆదాయం">Earnings</span></button>
+<button onclick="show('account',this)">👤<br><span data-en="Account" data-te="ఖాతా">Account</span></button>
+</div></nav>
+
+<div class="modal" id="modal"><div class="sheet" id="sheet"></div></div>
+
+<script>
+let isOnline=true, lang='en';
+
+function t(en,te){return lang==='te'?te:en}
+function applyLang(){
+ document.querySelectorAll('[data-en]').forEach(el=>el.textContent=lang==='te'?el.dataset.te:el.dataset.en);
+ document.getElementById('langBtn').textContent=lang==='en'?'తెలుగు':'English';
+ document.getElementById('ot').textContent=isOnline?t('You are available for rides','మీరు రైడ్‌లకు అందుబాటులో ఉన్నారు'):t('You are offline','మీరు Offlineలో ఉన్నారు');
+}
+function toggleLang(){lang=lang==='en'?'te':'en';applyLang()}
+function show(id,b){document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('.nav button').forEach(x=>x.classList.remove('active'));b&&b.classList.add('active');scrollTo(0,0)}
+function online(){isOnline=!isOnline;document.getElementById('status')?.remove();document.getElementById('ot').textContent=isOnline?t('You are available for rides','మీరు రైడ్‌లకు అందుబాటులో ఉన్నారు'):t('You are offline','మీరు Offlineలో ఉన్నారు');document.getElementById('ride').style.display=isOnline?'block':'none'}
+function acceptRide(){document.getElementById('ride').style.display='none';show('trip',document.querySelectorAll('.nav button')[1])}
+function rejectRide(){setTimeout(()=>document.getElementById('ride').style.display='block',1200)}
+function modal(x){document.getElementById('sheet').innerHTML=x;document.getElementById('modal').classList.add('show')}
+function closeM(){document.getElementById('modal').classList.remove('show')}
+function pin(){modal('<h2>🔐 '+t('Verify Ride PIN','Ride PIN ధృవీకరణ')+'</h2><p class="muted">'+t('Automatic customer Ride PIN','కస్టమర్‌కు ఆటోమేటిక్‌గా వచ్చిన Ride PIN')+'</p><div style="font-size:34px;font-weight:900;letter-spacing:8px;text-align:center;padding:24px">4827</div><button class="primary" style="width:100%" onclick="start()">'+t('Verify & Start Ride','ధృవీకరించి రైడ్ ప్రారంభించండి')+'</button><button class="dark" onclick="closeM()">'+t('Cancel','రద్దు')+'</button>')}
+function start(){modal('<h2>🚕 '+t('Trip Started','ట్రిప్ ప్రారంభమైంది')+'</h2><p class="muted">'+t('Ride PIN verified successfully.','Ride PIN విజయవంతంగా ధృవీకరించబడింది.')+'</p><div class="row"><span>'+t('Destination','గమ్యం')+'</span><b>Antarvedi Temple</b></div><button class="primary" style="width:100%;margin-top:13px" onclick="complete()">'+t('Complete Ride','రైడ్ పూర్తి చేయండి')+'</button>')}
+function complete(){modal('<h2>🏁 '+t('Trip Completed','ట్రిప్ పూర్తయింది')+'</h2><p class="muted">'+t('Earnings updated successfully.','ఆదాయం విజయవంతంగా అప్డేట్ అయింది.')+'</p><div class="row"><span>'+t('Fare','ఛార్జీ')+'</span><b>₹2,500</b></div><div class="row"><span>'+t('Your earnings','మీ ఆదాయం')+'</span><b>₹2,292</b></div><button class="primary" style="width:100%;margin-top:13px" onclick="closeM()">'+t('Done','పూర్తి')+'</button>')}
+function chat(){modal('<h2>💬 '+t('Customer Chat','కస్టమర్ Chat')+'</h2><div class="chat"><div class="msg">'+t('I am at the pickup point.','నేను Pickup దగ్గర ఉన్నాను.')+'</div><div class="msg me">'+t('I am coming, please wait.','నేను వస్తున్నాను, దయచేసి వేచి ఉండండి.')+'</div></div><div class="input"><input placeholder="'+t('Type a message','మెసేజ్ టైప్ చేయండి')+'"><button onclick="alert(t(\'Message sent\',\'మెసేజ్ పంపబడింది\'))">'+t('Send','పంపండి')+'</button></div><button class="dark" onclick="closeM()">'+t('Close','మూసివేయండి')+'</button>')}
+applyLang();
+</script>
+</body>
+</html>
