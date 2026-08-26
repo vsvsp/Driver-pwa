@@ -1,4 +1,4 @@
-const CACHE_NAME = "darshana-sethu-driver-v3";
+const CACHE_NAME = "darshana-sethu-driver-v10";
 
 const APP_FILES = [
   "./",
@@ -8,6 +8,7 @@ const APP_FILES = [
   "./icon-512.png"
 ];
 
+// INSTALL
 self.addEventListener("install", event => {
   event.waitUntil(
     caches.open(CACHE_NAME)
@@ -16,28 +17,72 @@ self.addEventListener("install", event => {
   );
 });
 
+// ACTIVATE
 self.addEventListener("activate", event => {
   event.waitUntil(
-    caches.keys().then(keys =>
-      Promise.all(
-        keys
-          .filter(key => key !== CACHE_NAME)
-          .map(key => caches.delete(key))
+    caches.keys()
+      .then(keys =>
+        Promise.all(
+          keys
+            .filter(key => key !== CACHE_NAME)
+            .map(key => caches.delete(key))
+        )
       )
-    ).then(() => self.clients.claim())
+      .then(() => self.clients.claim())
   );
 });
 
+// FETCH
 self.addEventListener("fetch", event => {
+  const request = event.request;
+
+  // Only handle GET requests
+  if (request.method !== "GET") return;
+
+  // HTML pages: ALWAYS try network first
+  if (
+    request.mode === "navigate" ||
+    request.destination === "document"
+  ) {
+    event.respondWith(
+      fetch(request, {
+        cache: "no-store"
+      })
+        .then(response => {
+          const copy = response.clone();
+
+          caches.open(CACHE_NAME).then(cache => {
+            cache.put(request, copy);
+          });
+
+          return response;
+        })
+        .catch(() => {
+          return caches.match(request).then(cached => {
+            return cached || caches.match("./index.html");
+          });
+        })
+    );
+
+    return;
+  }
+
+  // Other files
   event.respondWith(
-    fetch(event.request)
+    fetch(request, {
+      cache: "no-store"
+    })
       .then(response => {
-        const copy = response.clone();
-        caches.open(CACHE_NAME).then(cache => {
-          cache.put(event.request, copy);
-        });
+        if (response && response.ok) {
+          const copy = response.clone();
+
+          caches.open(CACHE_NAME).then(cache => {
+            cache.put(request, copy);
+          });
+        }
+
         return response;
       })
-      .catch(() => caches.match(event.request))
+      .catch(() => caches.match(request))
   );
 });
